@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>George Giovanis CMPT276 Assignment 1</title>
+    <link rel="stylesheet" type="text/css" href="calculator.css">
+</head>
+
+<body>
+
+    <div class="greyCard">
+        
+        <div class="whiteCard">
+            <p class="text1">Grade Calculator</p>
+
+            <div class="tableCard">
+                <p class="text2">Activities</p>
+                <p class="text3">Give grades to the numeric activities:</p>
+
+                <table class="inputTable">
+                    <thead>
+                        <th>Name</th><th>Short Name</th><th>Weight</th>
+                        <th>Grade</th><th>Percent</th></thead>
+                    <tbody>
+                        <tr id="Row1">
+                            <td>Activity 1</td>
+                            <td>A1</td>
+                            <td><input class="inp" id="weight-1" 
+                                input type="number"></input></td>
+                            <td><input class="inp" id="Grade-1-num" 
+                                input type="number">/</input>
+                            <br><input class="inp" id="Grade-1-den" 
+                                input type="number"></input></td>
+                            <td id="output1"></td>
+                        </tr>
+
+                        <tr id="Row2">
+                            <td>Activity 2</td>
+                            <td>A2</td>
+                            <td><input class="inp" id="weight-2" 
+                                input type="number"></input></td>
+                            <td><input class="inp" id="Grade-2-num" 
+                                input type="number">/</input>
+                            <br><input class="inp" id="Grade-2-den" 
+                                input type="number"></input></td>
+                            <td id="output2"></td>
+                        </tr>
+
+                        <tr id="Row3">
+                            <td>Activity 3</td>
+                            <td>A3</td>
+                            <td><input class="inp" id="weight-3" 
+                                input type="number"></input></td>
+                            <td><input class="inp" id="Grade-3-num" 
+                                input type="number">/</input><br>
+                            <input class="inp" id="Grade-3-den" 
+                                input type="number"></input></td>
+                            <td id="output3"></td>
+                        </tr>
+
+                        <tr id="Row4">
+                            <td>Activity 4</td>
+                            <td>A4</td>
+                            <td><input class="inp" id="weight-4" 
+                                input type="number"></input></td>
+                            <td><input class="inp" id="Grade-4-num" 
+                                input type="number">/</input>
+                            <br><input class="inp" id="Grade-4-den" 
+                                input type="number"></input></td>
+                            <td id="output4"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class=text2>Result</p>
+                
+                <ul>
+                    <div class="buttons">
+                        <span class="leftButton" href="">
+                            <a href="">WEIGHTED</a></span>
+                        <span class="rightButton" href="">
+                            <a href="">MEAN</a></span>
+                        <span class="hiddenButton" href="">
+                            <a href="">PRINT REPORT</a></span>
+                    </div>
+                </ul>
+
+                <p class=text4 id=resultOutput></p>
+
+                <img src="bravocado.gif" id="highScore">
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="calculator.js"></script>
+</html>

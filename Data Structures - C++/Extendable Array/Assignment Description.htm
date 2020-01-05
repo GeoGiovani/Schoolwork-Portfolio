@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0090)http://www.sfu.ca/~shermer/Teaching/cmpt-225-Summer2019/assignments/assignment2-words.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><link rel="stylesheet" href="./Assignment 2 - Words_files/lab_pages.css" type="text/css">
+<link rel="stylesheet" href="./Assignment 2 - Words_files/lab_style.css" type="text/css">
+
+
+
+
+  
+    
+
+    <title>
+        Assignment 2 - Words 
+    </title></head><body><h1>CMPT 225 Assignment 2</h1>
+
+<hr>    
+        
+<div class="plain">
+            
+
+<p>Start by downloading the <a href="http://www.sfu.ca/~shermer/Teaching/cmpt-225-Summer2019/assignments/a2-files.zip">assignment files</a>.  This
+zipfile contains a makefile, a test script and inputs/ground truths,
+and stubs for all of the .cpp files you need.  <b>Do not
+create any additional .h and .cpp files.</b></p>
+<ul>
+    <li>The makefile is for use with the linux program 'make', which helps compile programs.</li>
+    <li>The test file is test.py, which is a python file that is executable simply by typing 'test.py' at the linux shell. (or './test.py' if you don't have '.' in your PATH) </li>
+    <li>The testing inputs are the '.in' files, and the expected outputs (called <em>ground truths</em>) are in the '.gt' files.</li>
+    <li><em>Stubs</em> are simply placeholders, perhaps with some implementation.</li>
+</ul>
+<p>&nbsp;</p>
+<hr>
+
+<h2>Part 1 - Words</h2>
+
+<p>Consider the function shown below. Roughly, the function returns true if the letters in
+the string s are in alphabetical order, false otherwise.</p>
+
+<pre>//  PRE: s is composed of letters from the English alphabet, with no other characters.
+
+
+bool isInAlphabeticalOrder(string s) {
+	int length = s.size();
+	for (int i = 0; i &lt; length - 1; ++i) {
+		if (s[i] &gt; s[i+1]) {
+			return false;
+		}
+	}
+	return true;
+}
+</pre>
+
+<div class="deep">
+<h3>
+ASCII</h3>
+An exact description is that the function isInAlphabeticalOrder  returns true if the characters in the string s are in ASCII order;
+this differs from alphabetical order in that in ASCII order, all capital letters come before all lower-case ones.
+
+
+  <p>ASCII is the character encoding we most often use for storing and manipulating text on computers.  It assigns a
+7-bit code to the common characters used in English writing, including numbers, basic math symbols, and punctuation.  Inside memory, we commonly store the 7-bit ASCII
+code inside the lower bits of an 8-bit byte.  Ask a search engine about "ASCII" to find a chart of
+which codes (numbers) are assigned to which characters.</p>
+</div>
+
+  <h3>Your task</h3>
+  
+<p>We will be concerned with how many times the character comparison 
+  (s[i] &gt; s[i+1]) is executed.  First, implement the isInAlphabeticalOrder function in C++
+  in the file <i>words.cpp</i>.  The <i>makefile</i> contains a
+  definition for <i>words</i>.  You can build the executable <i>words</i> for
+  this part of the assignment by running "make words".  ("make" or
+  "make all" will build both <i>words</i> and the executable for the
+  second part of the assignment.)  </p>
+<p>Determine the following for the English words listed in file <i>wordlist</i> (do not convert to lowercase).
+  
+</p><ol>
+<li>The average length of a word</li>
+<li>The average number of character comparisons performed by <i>isInAlphabeticalOrder</i></li>
+<li>The average number of character comparisons as a function of the word length.</li>
+</ol>
+
+<p>You will need to add code to <em>isInAlphabeticalOrder</em> (or create a new function) to help you determine these values.</p>
+<p>Note that<i> words.cpp</i> contains code for reading <i>wordlist</i>.</p>
+<ul>
+  <li>Edit the file word_answers.txt to contain your answers to 1., and 2. above.
+  </li><li>The code in <i>words.cpp</i> writes your answer to 3. into a file
+  <i>average_comps.txt</i>.  Use the provided script <i>comps.p</i> to plot this
+  using gnuplot.  Running <i>gnuplot comps.p</i> will produce an image file
+  <i>average_comps.png</i> with a plot in it.
+  <pre>uname@hostname: ~$ ls average_comps.txt
+average_comps.txt
+uname@hostname: ~$ gnuplot comps.p
+uname@hostname: ~$ ls average_comps.png
+average_comps.png
+ </pre>
+</li></ul>
+
+Submit word_answers.txt and the gnuplot output average_comps.png with your
+C++ files from Part 2.
+
+
+
+<hr>
+
+<h2>Part 2 - Mode</h2>
+
+Write a C++ function that obtains the mode of a set of integers stored
+in an array.  Recall that the mode of a set is the most frequently
+occurring element.
+
+<p>Please use the provided file mode.cpp, and fill in the function
+mode.  Note: you must write any auxialliary functions you use, and may
+not include any external libraries to help (other than iostream and fstream).  The
+<i>makefile</i> contains a definition for <i>mode</i>.  You can build
+the executable <i>mode</i> for this part of the assignment by running
+"make mode".
+
+</p><h3>Testing</h3>
+
+<p>The zipfile contains a testing script, test.py.  You should run
+this, and other test cases, to verify correctness of your mode function.
+
+
+</p><hr>
+
+<h2>Grading</h2>
+
+The assignment is worth 10% and marks are allocated to the assignment as follows:
+
+<ul>
+<li>Part 1 4%</li>
+<li>Part 2 4%</li>
+<li>Coding style (memory management, choice of algorithms, use of functions and loops, code indentation
+and spacing, comments, and variable naming) 2%</li>
+</ul>
+
+<hr>
+
+
+<h2>Submission</h2>
+
+<p>You should submit your assignment online to the <span class="link-https"><a href="http://courses.cs.sfu.ca/">CourSys submission server</a></span>. You should submit the following:</p>
+
+<ul>
+  <li>Modified <i>words.cpp</i>
+  </li><li>Modified <i>word_answers.txt</i>
+  </li><li>Plot of number of comparisons as a function of n <i>average_comps.png</i>
+  </li><li>Modified <i>mode.cpp</i>
+</li></ul>
+
+<p>The assignment is due at <strong>11:59pm on Monday July 8</strong>.</p>
+</div>
+
+
+</body></html>

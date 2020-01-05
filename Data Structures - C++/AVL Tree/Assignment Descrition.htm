@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+
+<link rel="stylesheet" href="lab_pages.css">
+<link rel="stylesheet" href="lab_style.css">
+
+
+
+
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>
+        Assignment 3 - Trees
+    </title>
+
+    
+    
+    
+            
+            
+<h1>CMPT 225 Assignment 3: Trees</h1>
+
+       
+<hr>    
+        
+
+
+<div class="plain">
+
+<p>In this assignment you are to implement (in C++) a pointer-based
+  binary search
+tree to store and retrieve customer data.
+
+<p>Start by downloading the <a href="a3-files.zip">assignment files</a>.  This
+zipfile contains a makefile, a test script and ground truths,
+and stubs for all of the .h and .cpp files you need.
+  <ul>
+    <li><b>Please do not create any additional .h or .cpp files.</b>
+    <li><b>You can add to the .h files, but do not modify any of the
+    provided method prototypes.</b>
+    <li><b>You can modify customer_app.cpp for testing, but your code
+    must work with the original customer_app.cpp.</b>
+  </ul>
+
+
+  <hr>
+
+<h2>Customer Class</h2>
+
+  <i>Customer.h, Customer.cpp</i>
+
+<p>The customer class represents a customer of some fictional
+enterprise. The customer class should have the following attributes:
+</p>
+
+<ul>
+<li>Last name (<i>name</i>) - stored as a string (for which you will need to include the C++ string class: #include &lt string &gt
+using namespace std;)
+)</li>
+<li>First initial (<i>initial</i>) - stored as a single character (i.e. type char)</li>
+<li>Account balance (<i>account</i>) - the amount currently owed by the customer
+</li></ul>
+
+And these methods:
+
+
+<ul>
+<li>Default constructor</li>
+<li>Constructor(string, char, int) where the parameters are the values for last name, first initial and balance</li>
+<li>Getters for each attribute</li>
+<li>Setter for the balance (not required for the other attributes)</li>
+<li>Overloaded
+operators for the comparison operators (&lt;, &lt;=, &gt;, &gt;=, ==,
+!=). This will allow you to compare two contacts in the same way that
+base type comparisons are made. The comparison should be made
+alphabetically, by last name, and then initial. For example Smith J is
+greater than Smith H, and Smith J is less than Smythe H. Note that the
+string class also overloads the comparison operators so you can compare
+two strings in this way.</li>
+<li>Overloaded operator for the cout &lt;&lt; operator to allow you to
+output contacts. The output must be this:</li></ul>
+
+<pre>Customer c("Doe", 'J', 3344);
+cout &lt;&lt; c;
+</pre>
+
+should print:
+<pre>Doe, J. (3344)
+</pre>
+<b>It is very important that your output looks exactly like this.  The
+auto-grading script will require this output to function properly.</b>
+
+<p>You can find some basic instruction on how to overload the comparison operators and the cout &lt;&lt; operator in <a href="../labs/CMPT225-Lab8.html">this lab activity</a>.</p>
+
+<hr>
+
+<h2>Binary Search Tree</h2>
+
+<i>BSTree.h, BSTree.cpp</i>
+
+<p>Implement a binary search tree that has the following methods, all
+methods should preserve the binary search tree property.</p>
+
+<ul>
+<li>Default constructor - creates an empty tree
+</li>
+<li>Copy constructor - creates a copy of the given tree</li>
+<li>Destructor - frees dynamic memory allocated by the tree</li>
+<li>bool
+insert(string, char, int) - creates and inserts a new customer (with
+the data shown in the parameters) in the tree, in a new tree node.
+</li>
+<li>bool
+remove(string, char) - deletes the first node with a matching name and
+initial from the tree. Returns true if the deletion was
+successful (that is, if the customer was found). Note that two
+customers are equal if they have the same name and initial, regardless
+of the account balance.
+</li>
+<li>bool search(string, char) - searches the tree for the given value, returning true if the customer is found</li>
+<li>vector&lt;Customer&gt;
+rangeSearch(string, char, string , char) - returns a vector of
+Customers where the customer names (initial and last name) are in the
+range specified in the parameters. For example
+rangeSearch("Dobbs", 'A', "Fogg", D) returns all customers whose names
+are between Dobbs A and Fogg D.
+</li>
+<li>void inOrderPrint() - prints the contents of the tree in sorted
+order.  The output must be one customer per line, no other
+information.  E.g. if the tree contains two customers, it must print:
+<pre>Doe, J. (3344)
+Doe, K. (2344)
+</pre>
+</li></ul>
+
+<p>I expect that you will need to also implement a number of helper
+methods (which should be private).</p>
+
+<h3>Node Class</h3>
+
+<i>Node.h, Node.cpp</i>
+
+<p>As
+part of the tree implementation you should implement a Node
+class. Each node should contain a Customer object, pointers to
+left and right children and (optionally) the parent.
+</p>
+
+<hr>
+
+<h2>Application</h2>
+
+<i>customer_app.cpp</i> (<b>complete</b>, no need to modify)
+
+<p>I have provided an application to maintain a collection
+of customers. It uses your binary search tree class as the collection's
+container. It allows users to do the following:
+
+<ul>
+<li>Insert new customers</li>
+<li>Delete customers
+</li>
+<li>Search for customer</li>
+<li>Print the entire customer collection</li>
+<li>Print a range of customers</li>
+<li>Read a file of customers into the tree
+</li>
+<li>Quit
+</li></ul>
+
+
+<p>Note that this application will not function correctly until you
+have correctly implemented all the required methods in the Customer
+and BSTree classes.
+
+
+<h3>Sample Files</h3>
+
+<p>Two sample files of customers are included in the zip file. I'd suggest using <i>small_names.txt</i>
+for your preliminary testing as it is small enough for you to work
+out exactly what is going on with it. You can use the larger one <i>big_names.txt</i>
+for further testing.
+</p>
+
+<hr>
+
+<h2>Automated Testing</h2>
+
+<i>test_driver.cpp, test.py, *.gt</i>
+
+<p>A test driver <i>test_driver.cpp</i> is provided.  It takes a
+command-line argument that specifies which test case to run.  The test
+script <i>test.py</i> will run all of the test cases.
+
+<p>Please assert that the first two test cases pass before moving on
+to the others.  The first case checks the Customer printing, and the
+second checks the inOrderPrint.
+
+<hr>
+
+<h2>Manual Testing and Debugging</h2>
+
+<ul>
+  <li>You can run an individual test case in the test driver by supplying
+  a command-line argument
+  <pre>./test_driver 4
+</pre>
+  You could then compare this output to the ground truth file 4.gt.
+
+  <li>You can examine operations interactively using the application
+  customer_app:
+  <pre>./customer_app
+</pre>
+
+  <li>You should make changes to all files to print out extra debug
+  information (e.g. insert cout statements all over BSTree.cpp).  <b>Make
+  sure to turn these off before submission and automated testing.</b>
+  The automated testing wants exactly the output in the .gt files,
+  nothing else.  One quick way to accomplish this is to define a
+  constant, e.g. DEBUG, at the top of a BSTree.cpp, and only print the
+  debug output if this is true.
+  <pre>#define DEBUG 1
+...
+if (DEBUG) cout << "Current state of BST is " << bst.inOrderPrint();
+</ul>
+
+<hr>
+
+<h2>Assessment and Submission</h2>
+
+<h3>Submission</h3>
+
+<p>You should submit your assignment online to the <a href="http://courses.cs.sfu.ca/">CourSys submission server</a>. You should submit the following:</p>
+
+<ul>
+  <li>Modified <i>BSTree.cpp</i>
+ <li>Modified <i>Node.cpp</i>
+ <li>Modified <i>Customer.cpp</i>
+  <li>Modified <i>BSTree.h</i>
+ <li>Modified <i>Node.h</i>
+ <li>Modified <i>Customer.h</i>
+</ul>
+
+
+<p>Please read the documentation on the submission site for further
+information.  The assignment is due at 11:59pm on July 31.
+
+<h3>Assessment</h3>
+
+The submitted files must build with the provided makefile
+and customer_app.cpp in order to receive marks.
+
+The assignment is worth 10% and marks are allocated to the assignment as follows:
+
+<ul>
+<li>Correctness 6% (provided and held-out test cases)
+</li>
+<li>Memory management 1% (valgrind --error-exitcode=1 -q --leak-check=full ./test_driver 2)
+</li>
+<li>Coding style 3%  (use of functions and loops, code indentation
+and spacing, comments and variable naming)
+</li>
+</ul>
+
+           
+
+</div>
+
+
+
+
+
+
+    
+
+
+<p>
+  
+
+<hr>
+
+</body></html>
