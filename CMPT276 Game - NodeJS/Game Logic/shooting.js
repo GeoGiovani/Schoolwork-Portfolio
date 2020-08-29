@@ -23,7 +23,6 @@ function moveProjectiles(rm) {
         rooms[rm].projectiles[id].x = originX;
         rooms[rm].projectiles[id].y = originY;
         delBullet = true;
-        // deleteBullet(id);
       }
       //Delete stale projectiles
       if ((Math.abs(rooms[rm].projectiles[id].x) > 5000) ||
